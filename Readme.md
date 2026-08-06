@@ -240,17 +240,25 @@ RETURN c.name, c.platform, c.url
 
 ## Screenshots
 
-### Career Selection
+### Home Page
+![Home Page](Screenshots/home.png)
 
-_Add screenshot here_
 
 ### Learning Roadmap
 
-_Add screenshot here_
+![Roadmap](Screenshots/roadmap.png)
 
 ### Course Recommendations
 
-_Add screenshot here_
+![Courses](Screenshots/courses.png)
+
+### Graph Database
+
+![Database](Screenshots/database.png)
+
+### Api Request
+
+![API](Screenshots/poastmanapi)
 
 ---
 
