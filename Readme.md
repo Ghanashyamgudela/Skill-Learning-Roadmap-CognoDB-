@@ -84,7 +84,7 @@ Graph traversal makes it easy to discover connected data with efficient Cypher q
 ## Project Structure
 
 ```
-skillpath-ai/
+Skill-Learning-Roadmap-CognoDB/
 │
 ├── backend/
 │   ├── app.py
@@ -93,7 +93,7 @@ skillpath-ai/
 │   ├── routes.py
 │   ├── seed.py
 │   ├── requirements.txt
-│   └── .env.example
+│   └── .env
 │
 ├── frontend/
 │   ├── src/
@@ -266,7 +266,7 @@ _Add screenshot here_
 
 ## Author
 
-**Your Name**
+**Ghana Shyam Gudela**
 
 GitHub: https://github.com/Ghanashyamgudela
 
