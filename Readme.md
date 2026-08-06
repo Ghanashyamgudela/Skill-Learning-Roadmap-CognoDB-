@@ -258,7 +258,7 @@ RETURN c.name, c.platform, c.url
 
 ### Api Request
 
-![API](Screenshot/poastmanapi.png)
+![API](Screenshots/poastmanapi.png)
 
 ---
 
