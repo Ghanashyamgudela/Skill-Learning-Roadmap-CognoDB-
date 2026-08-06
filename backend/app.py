@@ -14,5 +14,3 @@ def home():
     return "SkillPath AI Backend Running"
 
 
-if __name__ == "__main__":
-    app.run(debug=True)
