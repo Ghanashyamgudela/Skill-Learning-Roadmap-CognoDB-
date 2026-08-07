@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 function Courses({ skill }) {
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
-  const API_URL = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     if (!skill) return;
@@ -25,15 +25,16 @@ function Courses({ skill }) {
         setCourses(data.courses || []);
       })
       .catch((err) => {
+        console.error(err);
         setError(err.message || "Unable to load courses.");
       })
       .finally(() => {
         setLoading(false);
       });
-  }, [skill, API_URL]);
+  }, [skill]);
 
   return (
-    <section className="section courses-section">
+    <section className="section course-section">
       <div className="section-header">
         <h2>Courses for {skill}</h2>
       </div>
