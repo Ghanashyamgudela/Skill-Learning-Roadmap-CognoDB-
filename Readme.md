@@ -30,16 +30,16 @@ A graph database makes these queries simple by representing relationships direct
 Example:
 
 ```
-Career
-   │
- REQUIRES
-   │
- Skill
-  / \
- /   \
+            Career
+               │
+           REQUIRES
+               │
+             Skill
+              / \
+             /   \
 PREREQUISITE_OF   TEACHES
-      │            │
-    Skill        Course
+         │           │
+       Skill       Course
 ```
 
 Graph traversal makes it easy to discover connected data with efficient Cypher queries.
