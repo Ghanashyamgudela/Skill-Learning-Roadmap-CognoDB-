@@ -18,6 +18,24 @@ const topicResources = {
       description: "Official guides and tutorials to deepen your understanding.",
       url: "https://docs.python.org/3/",
     },
+    {
+      type: "💻 Interactive",
+      title: "Codecademy Python Course",
+      description: "Hands-on lessons for Python fundamentals and practice exercises.",
+      url: "https://www.codecademy.com/learn/learn-python-3",
+    },
+    {
+      type: "📘 Tutorial",
+      title: "Automate the Boring Stuff",
+      description: "Build practical Python projects as you learn.",
+      url: "https://automatetheboringstuff.com/",
+    },
+    {
+      type: "🧩 Challenges",
+      title: "HackerRank Python Practice",
+      description: "Solve real coding problems with rising difficulty.",
+      url: "https://www.hackerrank.com/domains/python",
+    },
   ],
   sql: [
     {
@@ -31,6 +49,24 @@ const topicResources = {
       title: "SQL Practice Playground",
       description: "Sharpen your skills with practical query challenges.",
       url: "https://www.sqlbolt.com/",
+    },
+    {
+      type: "📚 Tutorial",
+      title: "Mode Analytics SQL Tutorial",
+      description: "Step-by-step SQL guides with interactive examples.",
+      url: "https://mode.com/sql-tutorial/",
+    },
+    {
+      type: "🧠 Challenges",
+      title: "LeetCode SQL Problems",
+      description: "Practice real interview-style database queries.",
+      url: "https://leetcode.com/problemset/database/",
+    },
+    {
+      type: "📖 Guide",
+      title: "SQLZoo",
+      description: "Interactive SQL lessons for hands-on query practice.",
+      url: "https://sqlzoo.net/",
     },
   ],
   react: [
@@ -46,6 +82,24 @@ const topicResources = {
       description: "Test your understanding of modern React concepts.",
       url: "https://www.sanfoundry.com/react-questions-answers/",
     },
+    {
+      type: "📖 Documentation",
+      title: "Official React Docs",
+      description: "The authoritative source for hooks, components, and APIs.",
+      url: "https://react.dev/",
+    },
+    {
+      type: "💡 Projects",
+      title: "Frontend Mentor React",
+      description: "Build UI components and app layouts with real design briefs.",
+      url: "https://www.frontendmentor.io/challenges?ref=react",
+    },
+    {
+      type: "🎓 Guide",
+      title: "React Developer Roadmap",
+      description: "Learn the recommended path from basics through advanced React.",
+      url: "https://roadmap.sh/frontend/react",
+    },
   ],
   javascript: [
     {
@@ -60,6 +114,24 @@ const topicResources = {
       description: "Practice logic, arrays, and async patterns daily.",
       url: "https://javascript30.com/",
     },
+    {
+      type: "📘 Tutorial",
+      title: "JavaScript.info",
+      description: "A modern, deep guide to core JavaScript concepts.",
+      url: "https://javascript.info/",
+    },
+    {
+      type: "🧑‍💻 Course",
+      title: "freeCodeCamp JavaScript",
+      description: "Full curriculum with exercises, projects, and certification.",
+      url: "https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/",
+    },
+    {
+      type: "💡 Reference",
+      title: "ES6 Guide",
+      description: "Master modern JavaScript features and syntactic improvements.",
+      url: "https://www.freecodecamp.org/news/es6-guide/",
+    },
   ],
   data: [
     {
@@ -67,6 +139,18 @@ const topicResources = {
       title: "Data Project Ideas",
       description: "Explore beginner-friendly project workflows and datasets.",
       url: "https://www.kaggle.com/learn",
+    },
+    {
+      type: "📘 Guide",
+      title: "Pandas Data Analysis",
+      description: "Learn data manipulation with the most popular Python library.",
+      url: "https://pandas.pydata.org/docs/getting_started/index.html",
+    },
+    {
+      type: "📊 Visualization",
+      title: "Plotly Data Stories",
+      description: "Build interactive charts and dashboards for analysis.",
+      url: "https://plotly.com/python/",
     },
   ],
   ai: [
@@ -76,6 +160,18 @@ const topicResources = {
       description: "Work through guided tasks for core AI concepts.",
       url: "https://www.coursera.org/learn/ai-for-everyone",
     },
+    {
+      type: "📚 Course",
+      title: "fast.ai Practical Deep Learning",
+      description: "Project-focused AI training for real applications.",
+      url: "https://www.fast.ai/",
+    },
+    {
+      type: "📖 Reference",
+      title: "OpenAI API Docs",
+      description: "Learn how to build AI services with modern APIs.",
+      url: "https://platform.openai.com/docs/",
+    },
   ],
   cloud: [
     {
@@ -83,6 +179,18 @@ const topicResources = {
       title: "Cloud Platform Guide",
       description: "Learn deployment patterns and service fundamentals.",
       url: "https://learn.microsoft.com/azure/",
+    },
+    {
+      type: "🎓 Training",
+      title: "AWS Cloud Practitioner",
+      description: "Introductory cloud concepts and architecture on AWS.",
+      url: "https://aws.amazon.com/training/path-cloud-practitioner/",
+    },
+    {
+      type: "☁️ Hands-on",
+      title: "Google Cloud Skills",
+      description: "Practice deploying services on Google Cloud Platform.",
+      url: "https://cloud.google.com/training",
     },
   ],
 };
@@ -231,6 +339,7 @@ function Roadmap({ career, selectSkill }) {
 
     setExpandedTopic(expanded);
     setShowScrollHint(Boolean(expanded));
+    setResourcesHighlighted(Boolean(expanded));
     selectSkill(skill);
 
     if (expanded) {
@@ -240,6 +349,10 @@ function Roadmap({ career, selectSkill }) {
           block: "start",
         });
       }, 120);
+
+      setTimeout(() => {
+        setResourcesHighlighted(false);
+      }, 1400);
     }
   };
 
@@ -293,8 +406,35 @@ function Roadmap({ career, selectSkill }) {
             ))}
           </div>
 
-          <div ref={resourcesRef}>
-            {/* Keep your existing resource panel JSX here */}
+          <div ref={resourcesRef} className="roadmap-resources">
+            {expandedTopic && (
+              <div className={`resource-panel ${resourcesHighlighted ? "is-highlighted" : ""}`}>
+                <div className="resource-panel__header">
+                  <h3>Learn more about {expandedTopic}</h3>
+                  <p>Curated resources to help you study this topic with confidence.</p>
+                </div>
+
+                <div className="resource-list">
+                  {selectedResources.length > 0 ? (
+                    selectedResources.map((resource, idx) => (
+                      <a
+                        key={`${expandedTopic}-${idx}`}
+                        href={resource.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="resource-card"
+                      >
+                        <span className="resource-card__type">{resource.type}</span>
+                        <h4>{resource.title}</h4>
+                        <p>{resource.description}</p>
+                      </a>
+                    ))
+                  ) : (
+                    <p>No additional resources found for this topic.</p>
+                  )}
+                </div>
+              </div>
+            )}
           </div>
         </>
       )}
